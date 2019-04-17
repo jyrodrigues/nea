@@ -1,0 +1,8 @@
+{
+  "name": "nea",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:jyrodrigues/nea.git",
+  "author": "José Rodrigues <jyrodrigues@gmail.com>",
+  "license": "MIT"
+}
