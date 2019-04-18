@@ -1,3 +1,3 @@
 const rootNode = document.getElementById('root');
 
-rootNode.innerHTML('Here is something from webpack ;)');
+rootNode.innerHTML = 'Here is something from webpack ;)';
