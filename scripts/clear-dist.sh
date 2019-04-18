@@ -9,7 +9,7 @@ cd "$(dirname "$0")"
 set -e
 
 # Echo every command being executed
-# set -x
+set -x
 
 # Go to root
 cd ..

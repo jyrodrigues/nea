@@ -1,6 +1,6 @@
 // Importing index.html to force webpack copy it to dist folder.
 import './index.html';
 
-const rootNode = document.getElementById('root');
+import { Elm } from './Main.elm';
 
-rootNode.innerHTML = 'Here is something from webpack ;)';
+Elm.Main.embed(document.getElementById('root'));
