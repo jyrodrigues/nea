@@ -3,4 +3,6 @@ import './index.html';
 
 import { Elm } from './Main.elm';
 
-Elm.Main.embed(document.getElementById('root'));
+const app = Elm.Main.init({
+  node: document.getElementById('root')
+});

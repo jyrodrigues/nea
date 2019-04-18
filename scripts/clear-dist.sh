@@ -29,5 +29,6 @@ things_inside_dist="$(ls -A | tr '\n' ' ')"
 # as a clue to what webpack + netlify are doing
 if [ -n "$things_inside_dist" ]; then
   rm -rf $things_inside_dist
-  git add "./"
+  cd ..
+  git add "./dist"
 fi
