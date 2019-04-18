@@ -1,4 +1,6 @@
 # nea
 Developing an [Elm](https://elm-lang.org/) App with Continuous Deploy via [Netlify](https://www.netlify.com/)
 
-> nea: netlify elm app
+---
+
+Currently deployed at https://suspicious-morse-77e6b8.netlify.com/
