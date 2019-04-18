@@ -21,6 +21,10 @@ module.exports = {
           options: {
             optimize: false,
             debug: false,
+            files: [
+              path.resolve(__dirname, "src/Main.elm"),
+              path.resolve(__dirname, "src/Nav.elm")
+            ]
           }
         }
       }
