@@ -1,5 +1,17 @@
 #!/bin/bash
 
+#
+#
+#
+# This whole file could be substituted
+# by a simple .gitignore rule "dist"
+# ignoring the dist folder. But I prefer
+# having it for further development :)
+#
+#
+#
+
+
 # Start in scripts/ even if run from root directory
 cd "$(dirname "$0")"
 
@@ -9,7 +21,7 @@ cd "$(dirname "$0")"
 set -e
 
 # Echo every command being executed
-set -x
+# set -x
 
 # Go to root
 cd ..
