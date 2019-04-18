@@ -9,14 +9,25 @@ cd "$(dirname "$0")"
 set -e
 
 # Echo every command being executed
-set -x
+# set -x
 
 # Go to root
 cd ..
 # root_path=$PWD
 
-# Remove all files inside dist/, but keep the folder itself as a clue to
-# what webpack + netlify are doing. 
-if [ -n "$(ls -A ./dist)" ]; then
-  rm ./dist/*
+if [ ! -d "./dist" ]; then
+  mkdir dist
+  exit 0
+fi
+
+cd ./dist
+
+# List files inside dist/ separated by spaces
+things_inside_dist="$(ls -A | tr '\n' ' ')"
+
+# Remove all files and folders inside dist/, but keep the folder itself
+# as a clue to what webpack + netlify are doing
+if [ -n "$things_inside_dist" ]; then
+  rm -rf $things_inside_dist
+  git add "./"
 fi
