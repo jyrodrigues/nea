@@ -1,5 +1,6 @@
 // Importing index.html to force webpack copy it to dist folder.
 import './index.html';
+import './_redirects';
 
 import { Elm } from './Index.elm';
 

@@ -38,7 +38,7 @@ type alias Model =
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    ( Model key url Home, Cmd.none )
+    ( Model key (Debug.log "initial url:" url) Home, Cmd.none )
 
 
 
