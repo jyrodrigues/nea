@@ -5,9 +5,11 @@ import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Url
+import Url.Parser as P
 
 
 
+-- import Url.Parse
 -- MAIN
 
 
@@ -15,11 +17,11 @@ main : Program () Model Msg
 main =
     Browser.application
         { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
         , onUrlChange = UrlChanged
         , onUrlRequest = LinkClicked
+        , subscriptions = subscriptions
+        , update = update
+        , view = view
         }
 
 
@@ -30,12 +32,13 @@ main =
 type alias Model =
     { key : Nav.Key
     , url : Url.Url
+    , route : Route
     }
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init flags url key =
-    ( Model key url, Cmd.none )
+    ( Model key url Home, Cmd.none )
 
 
 
@@ -59,7 +62,7 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | url = url }
+            ( { model | url = url, route = parseUrl url }
             , Cmd.none
             )
 
@@ -82,7 +85,7 @@ view model =
     { title = "URL Interceptor"
     , body =
         [ text "The current URL is: "
-        , b [] [ text (Url.toString model.url) ]
+        , b [] [ text (routeToString model.route) ]
         , ul []
             [ viewLink "/home"
             , viewLink "/profile"
@@ -97,3 +100,39 @@ view model =
 viewLink : String -> Html msg
 viewLink path =
     li [] [ a [ href path ] [ text path ] ]
+
+
+
+-- URL PARSER
+
+
+type Route
+    = AnyString String
+    | Home
+    | NotFound Url.Url
+
+
+parseUrl : Url.Url -> Route
+parseUrl url =
+    Maybe.withDefault (NotFound url) (P.parse routeParser url)
+
+
+routeParser : P.Parser (Route -> a) a
+routeParser =
+    P.oneOf
+        [ P.map Home P.top
+        , P.map AnyString P.string
+        ]
+
+
+routeToString : Route -> String
+routeToString route =
+    case route of
+        AnyString s ->
+            "Got this weird string: " ++ s
+
+        Home ->
+            "Just plain ol' home ya know?"
+
+        NotFound url ->
+            "404! I don't know this route: " ++ Url.toString url

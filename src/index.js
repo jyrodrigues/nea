@@ -3,7 +3,10 @@ import './index.html';
 
 import { Elm } from './Index.elm';
 
-// const app = Elm.Main.init({
-const app = Elm.Nav.init({
-  node: document.getElementById('root')
-});
+// const main = Elm.Main.init({
+//   node: document.getElementById('main')
+// });
+
+// Initializing and Elm application apparently overrides everything inside <body>!
+Elm.Nav.init();
+
