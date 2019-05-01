@@ -14,6 +14,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\_redirects$/,
+        exclude: /node_modules/,
+        loader: "file-loader?name=[name]",
+      },
+      {
         test: /\.html$/,
         exclude: /node_modules/,
         loader: "file-loader?name=[name].[ext]",
