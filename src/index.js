@@ -9,5 +9,5 @@ import { Elm } from './Index.elm';
 // });
 
 // Initializing and Elm application apparently overrides everything inside <body>!
-Elm.Nav.init();
+Elm.Main.init();
 
