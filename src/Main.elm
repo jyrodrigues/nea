@@ -4,6 +4,7 @@ import Browser
 import Browser.Navigation as Nav
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Increment.Inc as Increment
 import Navigate.Nav as Navigate
 import Route exposing (Model, parseUrl)
 import Url
@@ -40,6 +41,7 @@ type Msg
     = LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
     | NavigateMsg Navigate.Msg
+    | IncrementMsg Increment.MyMsg
 
 
 update : Msg -> Route.Model -> ( Model, Cmd Msg )
@@ -59,6 +61,9 @@ update msg model =
             )
 
         NavigateMsg _ ->
+            ( model, Cmd.none )
+
+        IncrementMsg _ ->
             ( model, Cmd.none )
 
 
@@ -86,6 +91,9 @@ view model =
             { title = title, body = List.map (Html.map toMsg) body }
     in
     case model.route of
+        Route.AnyString _ ->
+            viewPage IncrementMsg (Increment.view model)
+
         _ ->
             viewPage NavigateMsg (Navigate.view model)
 

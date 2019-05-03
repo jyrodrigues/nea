@@ -51,7 +51,7 @@ view model =
         , b [] [ text (routeToString model.route) ]
         , ul []
             [ viewLink "/home"
-            , viewLink "/profile"
+            , viewLink "/inc"
             , viewLink "/reviews/the-century-of-the-self"
             , viewLink "/reviews/public-opinion"
             , viewLink "/reviews/shah-of-shahs"
