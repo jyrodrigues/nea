@@ -1,3 +1,5 @@
 # Netlify redirects file
 
+# Just so you know: this overwrite is unnecessary.
+# /wrote.html /wrote.html 200
 /*    /index.html   200
