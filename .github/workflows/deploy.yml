@@ -15,7 +15,7 @@ jobs:
     
     steps:
       - name: Checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
       
       - name: Setup Node.js for use with actions
         uses: actions/setup-node@v1.1.0
@@ -24,7 +24,7 @@ jobs:
           version: 13.x
 
       - run: yarn
-      - run: yarn build
+      - run: yarn webpack
       
       - name: Deploy to netlify
         uses: netlify/actions/cli@master
