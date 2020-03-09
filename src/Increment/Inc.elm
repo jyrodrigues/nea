@@ -17,7 +17,7 @@ type alias MyModel =
 
 init : MyModel
 init =
-    0
+    999
 
 
 
